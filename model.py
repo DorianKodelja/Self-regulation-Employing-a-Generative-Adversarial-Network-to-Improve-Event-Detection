@@ -140,13 +140,13 @@ class Model(object):
         
         self.bi_rnn_outputs_dropout = tf.nn.dropout(
             tf.concat(self.bi_rnn_outputs, axis=-1, name='bi_rnn_outputs'),
-            keep_prob=1.0,
+            keep_prob=1.0-self.dropout_rate_ph,
             name='bi_rnn_outputs_dropout'
             )
         
         self.g_bi_rnn_outputs_dropout = tf.nn.dropout(
             tf.concat(self.g_outputs, axis=-1, name='g_bi_rnn_outputs'),
-            keep_prob=1.0,
+            keep_prob=1.0-self.dropout_rate_ph,
             name='g_bi_rnn_outputs_dropout'
             )
         # outputs of sequences without paddings
